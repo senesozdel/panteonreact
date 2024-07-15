@@ -11,9 +11,9 @@ const TableComp = () => {
                             <tr>
                                 <th scope="col">#</th>
                                 <th scope="col">Name</th>
-                                <th scope="col">Position</th>
-                                <th scope="col">Age</th>
-                                <th scope="col">Start Date</th>
+                                <th scope="col">Building Type</th>
+                                <th scope="col">Building Cost</th>
+                                <th scope="col">Constraction Time</th>
                             </tr>
                         </thead>
                         <tbody>

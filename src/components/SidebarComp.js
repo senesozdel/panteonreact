@@ -57,7 +57,7 @@ const SidebarComp = () => {
           </Link>
           <ul id="buildingConfig-nav" className="nav-content collapse " data-bs-parent="#sidebar-nav">
             <li>
-              <Link >
+              <Link to="/deneme">
                 <i className="bi bi-list fs-6" /><span>Show Building Configurations</span>
               </Link>
             </li>
