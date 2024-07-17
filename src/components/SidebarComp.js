@@ -1,6 +1,21 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
-const SidebarComp = () => {
+import { Link ,useNavigate} from 'react-router-dom'
+import { setShowAddModal,setModalType } from '../features/modals/ModalSlice'
+import { useDispatch, useSelector } from 'react-redux';
+
+const SidebarComp = ({handleLogout}) => {
+
+const dispatch = useDispatch();
+
+const handleShowAddConfigModal = () => {
+  dispatch(setModalType("addConfig"))
+  dispatch(setShowAddModal(true));
+};
+const handleShowAddTypeModal = () => {
+  dispatch(setModalType("addBuildType"))
+  dispatch(setShowAddModal(true));
+};
+
   return (
     <aside id="sidebar" className="sidebar">
       <ul className="sidebar-nav" id="sidebar-nav">
@@ -16,21 +31,12 @@ const SidebarComp = () => {
           </Link>
           <ul id="users-nav" className="nav-content collapse " data-bs-parent="#sidebar-nav">
             <li>
-              <Link >
+              <Link to="/teamMembers" >
                 <i className="bi bi-people fs-6" /><span>Team Members</span>
               </Link>
             </li>
-            <li>
-              <Link >
-                <i className="bi bi-person-add fs-6" /><span>Add User</span>
-              </Link>
-            </li>
-            <li>
-              <Link >
-                <i className="bi bi-person-gear fs-6" /><span>Roles and Permissions</span>
 
-              </Link>
-            </li>
+
           </ul>
         </li>
         <li className="nav-item">
@@ -39,12 +45,12 @@ const SidebarComp = () => {
           </Link>
           <ul id="buildingTypes-nav" className="nav-content collapse " data-bs-parent="#sidebar-nav">
             <li>
-              <Link >
+              <Link to="/buildType">
                 <i className="bi bi-list fs-6" /><span>Show Building Types</span>
               </Link>
             </li>
             <li>
-              <Link >
+              <Link onClick={()=>handleShowAddTypeModal()}  >
                 <i className="bi bi-plus fs-6" /><span>Add New Building Type</span>
               </Link>
             </li>
@@ -57,28 +63,23 @@ const SidebarComp = () => {
           </Link>
           <ul id="buildingConfig-nav" className="nav-content collapse " data-bs-parent="#sidebar-nav">
             <li>
-              <Link to="/deneme">
+              <Link to="/buildConfigs">
                 <i className="bi bi-list fs-6" /><span>Show Building Configurations</span>
               </Link>
             </li>
             <li>
-              <Link >
+              <Link onClick={()=>handleShowAddConfigModal()} >
                 <i className="bi bi-plus fs-6" /><span>Add New Building Configuration</span>
               </Link>
             </li>
           </ul>
         </li>
 
-        <li className="nav-heading">Pages</li>
-        <li className="nav-item">
-          <Link className="nav-link collapsed" >
-            <i className="bi bi-person" />
-            <span>Profile</span>
-          </Link>
-        </li>
+        <li className="nav-heading">Quick Links</li>
+
         
-        <li className="nav-item">
-          <Link className="nav-link collapsed" >
+        <li onClick={handleLogout} className="nav-item">
+          <Link  className="nav-link collapsed" >
             <i className="bi bi-box-arrow-in-right" />
             <span>Logout</span>
           </Link>
